@@ -5,18 +5,19 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.SPI;
 
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
-  public TalonSRX leftLead;
-  public TalonSRX leftFollow;
-  public TalonSRX rightLead;
-  public TalonSRX rightFollow;
+  public TalonFX leftLead;
+  public TalonFX leftFollow;
+  public TalonFX rightLead;
+  public TalonFX rightFollow;
   private AHRS gyro;
 
   public static final double WHEEL_DIAMETER_METERS = .158;
@@ -26,10 +27,10 @@ public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
   public Drivetrain() {
 
-    leftLead = new TalonSRX(0);
-    leftFollow = new TalonSRX(1);
-    rightLead = new TalonSRX(2);
-    rightFollow = new TalonSRX(3);
+    leftLead = new TalonFX(2);
+    leftFollow = new TalonFX(1);
+    rightLead = new TalonFX(3);
+    rightFollow = new TalonFX(5);
     gyro = new AHRS(SPI.Port.kMXP);
 
     rightFollow.follow(rightLead);
